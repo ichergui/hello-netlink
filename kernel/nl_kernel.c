@@ -22,7 +22,7 @@ static void nl_recv_msg_cb(struct sk_buff *user_skb) {
     msg_size = strlen(msg);
     kernel_skb = nlmsg_new(msg_size, 0);
     if(kernel_skb == NULL) {
-        printk(KERN_ERR "Failed to allocate new skb\n");
+        printk(KERN_ERR "create a new netlink message failed\n");
         return;
     }
 
@@ -31,7 +31,7 @@ static void nl_recv_msg_cb(struct sk_buff *user_skb) {
     strncpy(nlmsg_data(nlh), msg, msg_size);
     res = nlmsg_unicast(nlk_soc, kernel_skb, pid);
     if(res < 0)
-        printk(KERN_ERR "Kernel \n");
+        printk(KERN_ERR "unicast a netlink message failed\n");
 }
 
 struct netlink_kernel_cfg nl_kcfg = {
@@ -57,4 +57,3 @@ void cleanup_module() {
 MODULE_DESCRIPTION("Hello via netlink kernel module");
 MODULE_AUTHOR("Ilies CHERGUI <ilies.chergui@gmail.com>");
 MODULE_LICENSE("GPL");
-
