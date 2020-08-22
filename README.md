@@ -6,18 +6,18 @@ A basic communication between kernel and user via netlink
     $ cd $HOME
     $ mkdir devel
     $ cd devel
-    $ git clone https://github.com/ichergui/hello_netlink.git
+    $ git clone https://github.com/ichergui/hello-netlink.git
 
 ### Build
 ##### kernel side
 
 ```bash
-$ cd $HOME/devel/hello_netlink/kernel
+$ cd $HOME/devel/hello-netlink/kernel
 $ make all
 ```
 ##### User side
 ```bash
-$ cd $HOME/devel/hello_netlink/user
+$ cd $HOME/devel/hello-netlink/user
 $ gcc -o nl_user nl_user.c $(pkg-config --cflags --libs libnl-3.0)
 ```
 
@@ -25,7 +25,7 @@ $ gcc -o nl_user nl_user.c $(pkg-config --cflags --libs libnl-3.0)
 ## Test
 #### Insert it into the Linux kernel
 ```bash
-$ cd $HOME/devel/hello_netlink/kernel
+$ cd $HOME/devel/hello-netlink/kernel
 $ sudo insmod nl_kernel.ko
 ```
 * __verification__
@@ -37,7 +37,7 @@ $
 
 #### Launch the application
 ```bash
-$ cd $HOME/devel/hello_netlink/user
+$ cd $HOME/devel/hello-netlink/user
 $ ./nl_user -m "Hello from Ilies"
 User send the following message to the kernel:
 Hello from Ilies
